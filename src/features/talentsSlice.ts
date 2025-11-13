@@ -6,7 +6,7 @@ const API_URL = 'https://talent-server-5gdg.onrender.com/api/talents';
 
 export const fetchTalents = createAsyncThunk(
   'talents/fetchTalents',
-  async (skill?: string, { rejectWithValue }) => {
+  async (skill: string | undefined, { rejectWithValue }) => {
     try {
       const url = skill ? `${API_URL}?skill=${encodeURIComponent(skill)}` : API_URL;
       const response = await axios.get<Talent[]>(url);

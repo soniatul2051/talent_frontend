@@ -25,11 +25,17 @@ const TalentForm: React.FC = () => {
         experience: Number(data.experience)
       };
       
-      await dispatch(addTalent(talentData)).unwrap();
-      toast.success('Talent added successfully!');
-      reset();
+      const result = await dispatch(addTalent(talentData));
+      
+      if (addTalent.fulfilled.match(result)) {
+        toast.success('Talent added successfully!');
+        reset();
+      } else if (addTalent.rejected.match(result)) {
+        const errorMessage = result.payload as string;
+        toast.error(errorMessage || 'Failed to add talent');
+      }
     } catch (error: any) {
-      toast.error(error || 'Failed to add talent');
+      toast.error(error?.message || 'Failed to add talent');
     }
   };
 

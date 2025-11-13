@@ -27,7 +27,7 @@ const SkillFilter: React.FC = () => {
             type="text"
             value={skill}
             onChange={(e) => setSkill(e.target.value)}
-            placeholder="Enter skill"
+            placeholder="Enter skill (e.g., React, Node.js)"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
